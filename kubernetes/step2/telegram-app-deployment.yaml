@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegram-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: telegram-app
+  template:
+    metadata:
+      labels:
+        app: telegram-app
+    spec:
+      containers:
+        - name: telegram-app
+          image: melnykovm/telegram-app:V1.0.4
+          resources:
+            limits:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+          ports:
+            - containerPort: 8084
+          env:
+            - name: SERVER_PORT
+              value: "8084"
+            - name: BOT_NAME
+              value: "ReadnocryBot"
+            - name: BOT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: telegram-bot-token
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq
+            - name: SPRING_RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-port
+            - name: SPRING_RABBITMQ_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-username
+            - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: rabbitmq-password
+            - name: BOT_URI
+              value: "https://readnocry.com"
+            - name: SERVER_SSL_ENABLED
+              value: "false"

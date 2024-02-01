@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background-color: rgb(30 31 34);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.menu-button-line {
+  font-size: 16px;
+  height: 30px;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgb(30 31 34);
+  color: rgb(188 190 195);
+  padding: 7px;
+  box-sizing: border-box;
+  text-align: right;
+  display: block;
+  z-index: 4;
+}
+
+.menu-shown {
+  display: block;
+  box-sizing: border-box;
+  text-align: right;
+}
+
+.menu-shown a {
+  color: rgb(188 190 195);
+  padding: 10px;
+  font-style: normal;
+  text-decoration: none;
+}
+
+.theme-switcher {
+  top: 5px;
+  left: 10px;
+  position: fixed;
+  z-index: 3;
+  display: block;
+  width: 47px;
+  height: 20px;
+}
+
+.theme-switcher input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(188 190 195);
+  -webkit-transition: .4s;
+  transition: .4s;
+  height: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: rgb(43 45 48);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: rgb(43 45 48);
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px rgb(188 190 195);
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+  background-color: rgb(188 190 195);
+}
+
+.slider.round {
+  border-radius: 20px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+.container {
+  display: flex;
+  height: calc(100% - 30px);
+}
+
+.left {
+  position: relative;
+  line-height: 1.7;
+  color: rgb(188 190 195);
+  background-color: rgb(30 31 34);
+  flex: 3;
+}
+
+.right {
+  background-color: rgb(43 45 48);
+  color: rgb(188 190 195);
+  flex: 2;
+  position: relative;
+  padding: 0;
+  font-size: 20px;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+.translation {
+  min-height: calc(100% - 60px);
+  height: calc(100% - 60px);
+  max-height: calc(100% - 60px);
+  padding: 25px;
+  overflow-y: auto;
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.sentence {
+  cursor: pointer;
+}
+
+.sentence:hover {
+  color: #FCFCFC;
+}
+
+#bookContent {
+  min-height: calc(100% - 60px);
+  height: calc(100% - 60px);
+  max-height: calc(100% - 60px);
+  padding: 20px;
+  padding-top: 5px;
+  padding-bottom: 55px;
+  font-size: 20px;
+  overflow-y: auto;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: calc(30px);
+  height: calc(30px);
+  max-height: calc(30px);
+  background: linear-gradient(rgba(30, 31, 34, 0.3), 5%, rgba(30, 31, 34, 1));
+  padding: 10px 20px;
+  text-align: center;
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.button-container button {
+  flex: 2;
+  font-size: 15px;
+  background-color: rgb(43 45 48);
+  color: rgb(188 190 195);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.button-container span {
+  flex: 1;
+  font-size: 15px;
+}
+
+.button-container button:hover {
+  background-color: rgb(48 50 53);
+  transform: scale(1.01);
+}
+
+.button-container button:active {
+  transform: scale(0.95);
+}
+
+.send-button-container {
+  font-family: 'Montserrat', sans-serif;
+  color: rgb(188 190 195);
+}
+
+.send-button-container button {
+  flex: 1;
+  font-size: 15px;
+  background-color: rgb(30 31 34);
+  color: rgb(188 190 195);
+  border: none;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.send-button-container button:hover {
+  background-color: rgb(33 34 37);
+  transform: scale(1.04);
+}
+
+.send-button-container button:active {
+  transform: scale(0.95);
+}
+
+.line {
+  border-bottom: 2px solid rgb(188 190 195);
+}
+
+#loading-light {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#loading-dark {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#loading-light-second {
+  margin-top: 70px;
+  margin-left: calc(50% - 60px);
+}
+
+#loading-dark-second {
+  margin-top: 70px;
+  margin-left: calc(50% - 60px);
+}
+
+.translation-menu-button {
+  display: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .right {
+    position: fixed;
+    width: 97%;
+    height: 100%;
+    top: 0;
+    right: -100%;
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 5;
+
+    background-color: rgb(43 45 48);
+    color: rgb(188 190 195);
+    padding: 0;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .right.open {
+    right: 0;
+  }
+
+  .translation-menu-button {
+    margin-left: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    z-index: 6;
+    font-size: 15px;
+
+    font-size: 15px;
+    background-color: rgb(43 45 48);
+    color: rgb(188 190 195);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+  }
+
+  .translation-menu-button:hover {
+    background-color: rgb(48 50 53);
+    transform: scale(1.01);
+  }
+
+  .translation-menu-button:active {
+    transform: scale(0.95);
+  }
+
+  .translation {
+    min-height: calc(100% - 95px);
+    height: calc(100% - 95px);
+    max-height: calc(100% - 95px);
+    padding: 25px;
+    overflow-y: auto;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: left;
+  }
+}
+
+.menu-smartphone {
+  display: none;
+}
+
+.menu-button {
+  display: none;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+
+  .menu-shown {
+    display: none;
+  }
+
+  .menu-smartphone {
+    display: block;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    right: -100%;
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 3;
+    background-color: rgb(43 45 48);
+    color: rgb(188 190 195);
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 40px;
+    padding-right: 16px;
+    padding-left: 20px;
+    border-left: 2px solid rgb(188 190 195);
+  }
+
+  .menu-smartphone a {
+    color: rgb(188 190 195);
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    text-decoration: none;
+  }
+
+  .menu-smartphone.open {
+    right: 0;
+  }
+
+  .menu-button {
+    position: fixed;
+    right: 22px;
+    width: 70px;
+    display: block;
+    z-index: 5;
+    cursor: pointer;
+  }
+}
+
+.light-theme {
+  background-color: rgb(237 237 237);
+  color: rgb(30 31 34);
+}
+
+.light-theme .left {
+  background-color: rgb(237 237 237);
+  color: rgb(30 31 34);
+}
+
+.light-theme .right {
+  background-color: rgb(175 175 180);
+  color: rgb(30 31 34);
+}
+
+.light-theme .button-container {
+  background: linear-gradient(rgba(237, 237, 237, 0.3), 5%, rgba(237, 237, 237, 1));
+}
+
+.light-theme .button-container button {
+  background-color: rgb(175 175 180);
+  color: rgb(30 31 34);
+}
+
+.light-theme .button-container button:hover {
+  background-color: rgb(170 170 175);
+}
+
+.light-theme .sentence:hover {
+  color: #000000;
+  text-shadow: 0 0 4px rgba(200, 200, 200, 1);
+}
+
+
+
+
+.light-theme .line {
+  border-bottom: 2px solid rgb(30 31 34);
+}
+
+.light-theme .send-button-container {
+  color: rgb(30 31 34);
+}
+
+.light-theme .send-button-container button {
+  background-color: rgb(237 237 237);
+  color: rgb(30 31 34);
+}
+
+.light-theme .send-button-container button:hover {
+  background-color: rgb(220 220 220);
+}
+
+.light-theme .translation-menu-button {
+  background-color: rgb(175 175 180);
+  color: rgb(30 31 34);
+}
+
+.light-theme .translation-menu-button:hover {
+  background-color: rgb(170 170 175);
+}

@@ -1,0 +1,9 @@
+*.log
+*.txt
+.DS_Store
+common-secret.yaml
+application.properties
+/shelf/
+/workspace.xml
+/.idea
+!Base-book.log

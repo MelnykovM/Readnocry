@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAc/8AAAAAAP///wDJyckARZn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERESIiIiIRERETMzMzMyERERERERETIRERFERERBMhEREQAAAUEyERERAAAAQTIREREAAABBMhEREQAAAEEyERERAAAAQTIREREAAABBMhEREQAAAEEyERERABEQQTEREREAAABBERERERERERERERERERERERERHwDwAA4AcAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADABwAAwA8AAOAfAAD//wAA" rel="icon" type="image/x-icon">
+    <title>Readnocry</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        html {
+          color: rgb(188 190 195);
+          background-color: rgb(30 31 34);
+        }
+
+        .links {
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          gap: 50px;
+        }
+
+        .links a {
+          color: rgb(188 190 195);
+          font-family: 'Montserrat', sans-serif;
+          font-style: normal;
+          text-decoration: none;
+        }
+
+        .content {
+          margin-top: 20px;
+          text-align: justify;
+          padding: 100px;
+          padding-top: 10px;
+          margin-top: 20px;
+          color: rgb(188 190 195);
+          font-size: 20px;
+          font-family: 'Montserrat', sans-serif;
+          background-color: rgba(30, 31, 34, 0);
+          height: 100%;
+        }
+
+        .content h1 {
+          text-align: left;
+        }
+
+        .buttons {
+          margin-top: 20px;
+        }
+
+        button {
+          width: 150px;
+          height: 50px;
+          padding: 10px;
+          font-size: 15px;
+          background-color: rgb(43 45 48);
+          color: rgb(188 190 195);
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        button:hover {
+          background-color: rgb(48 50 53);
+          transform: scale(1.01);
+        }
+
+        button:active {
+          transform: scale(0.95);
+        }
+
+        .menu-shown {
+          display: block;
+          z-index: 10;
+          position: fixed;
+          top: 0;
+          right: 0;
+          width: 100%;
+          background-color: rgb(30 31 34);
+          color: rgb(188 190 195);
+          padding: 7px;
+          box-sizing: border-box;
+          text-align: right;
+          font-family: 'Montserrat', sans-serif;
+        }
+
+        .menu-shown a {
+          color: rgb(188 190 195);
+          padding: 10px;
+          font-family: 'Montserrat', sans-serif;
+          font-style: normal;
+          text-decoration: none;
+        }
+
+        .image {
+          top: 0;
+          position: fixed;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: -1;
+        }
+
+        .full-width-image {
+          width: auto;
+          height: 100vh;
+          opacity: 0.3;
+        }
+
+        @media only screen and (max-width: 900px) {
+
+          .content {
+            margin-top: 20px;
+            text-align: justify;
+            padding: 20px;
+            padding-top: 10px;
+            margin-top: 20px;
+            color: rgb(188 190 195);
+            font-size: 20px;
+            font-family: 'Montserrat', sans-serif;
+            background-color: rgba(30, 31, 34, 0);
+            height: 100%;
+          }
+
+          .links {
+          display: block;
+          }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="image">
+    <img src="/book-image.png" alt="Book" class="full-width-image">
+</div>
+
+<div class="content">
+    <h1>Welcome to Readnocry!</h1>
+
+    Readnocry lets you enjoy books in English with its AI-powered translator.
+    <br>
+    The primary benefit of using artificial intelligence for translation is its ability to understand context, idioms, and nuanced expressions.
+    <br>
+    Additionally, AI can identify words and phrases that may be unfamiliar to you,
+    based on your English proficiency level, and offer translations for these.
+    <br>
+    App also provides the way of adding these terms to a dictionary and Telegram for easy access.
+    <div class="buttons">
+        <button onclick="window.location.href='/bookshelf';">Start</button>
+    </div>
+    <br>
+
+    <div id="links" class="links">
+        <a href="https://github.com/MelnykovM/Readnocry" target="_blank">
+            <h1><i class="fab fa-github"></i> GitHub</h1>
+        </a>
+
+        <a href="https://www.linkedin.com/in/mihail-melnykov-266513124/" target="_blank">
+            <h1><i class="fab fa-linkedin"></i> LinkedIn</h1>
+        </a>
+
+    </div>
+    <br>
+
+    <h1>Tech Stack</h1>
+
+    Readnocry is built on a diverse and robust technology stack, ensuring a seamless and efficient user experience. Here's a detailed overview of the technologies used:
+    <br><br>
+    General:
+    <br>
+    <b>Java 17:</b> The core programming language providing stability and performance.
+    <br>
+    <b>Spring Boot:</b> The backbone for creating stand-alone, production-grade Spring-based applications with ease.
+    <br><br>
+    Database Management:
+    <br>
+    <b>Spring Data:</b> For streamlined data access and manipulation.
+    <br>
+    <b>PostgreSQL:</b> Our primary database, managing user information, books, and other essential data.
+    <br>
+    <b>MongoDB:</b> Employed for managing user dictionaries effectively.
+    <br><br>
+    Asynchronous Interactions Between Microservices:
+    <br>
+    <b>RabbitMQ:</b> A message broker enabling efficient communication between different parts of the application.
+    <br><br>
+    Security:
+    <br>
+    <b>Spring Security:</b> Ensures robust security measures are in place to protect user data and interactions.
+    <br><br>
+    Web Application:
+    <br>
+    <b>HTML + CSS:</b> For structuring and styling the user interface.
+    <br>
+    <b>JavaScript:</b> Adds interactivity to the web pages.
+    <br>
+    <b>WebSocket:</b> Used for real-time content updates without needing to reload the page.
+    <br><br>
+    Testing:
+    <br>
+    <b>SpringBootTest & Testcontainers:</b> A heavy focus on integration testing, with 90% of tests falling into this category, ensuring reliability and robustness.
+    <br><br>
+    Deployment:
+    <br>
+    <b>Docker + Kubernetes:</b> The application is deployed on Google Cloud Kubernetes, ensuring scalability and reliability.
+    <br><br>
+    Logging:
+    <br>
+    <b>Log4j:</b> For efficient tracking and logging of application operations.
+    <br><br>
+    Additional technical solutions:
+    <br>
+    <b>MappedFileBlock:</b> this feature is specifically designed for caching "active" parts of books. It significantly improves performance by reducing load times and enhancing the responsiveness of the app. This approach ensures that users have a seamless reading experience, especially when navigating through large volumes of text.
+    <br>
+    <b>CryptoTool:</b> Utilized for hashing user IDs while creating activation links for user accounts and connecting the Telegram bot with the addition of a "Salt". It prevents potential attackers from easily deciphering hashed information, thus safeguarding user data and connections, especially during critical actions like account activation and bot integration.
+    <br><br>
+    External Services:
+    <br>
+    <b>Telegram Bot API:</b> Integrated using WebHook technology for real-time interactions.
+    <br>
+    <b>Open AI API:</b> Facilitates interaction with ChatGPT, utilizing the gpt-3.5-turbo model for advanced AI capabilities.
+
+    <div class="buttons">
+        <button onclick="window.location.href='/bookshelf';">Start</button>
+    </div>
+</div>
+
+</body>
+
+</html>

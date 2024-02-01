@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: telegram-integration-app-deployment
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: telegram-integration-app
+  template:
+    metadata:
+      labels:
+        app: telegram-integration-app
+    spec:
+      containers:
+        - name: telegram-integration-app
+          image: melnykovm/telegram-integration-app:V7.0
+          resources:
+            limits:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+          ports:
+            - containerPort: 8085
+          env:
+            - name: SERVER_PORT
+              value: "8085"
+
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq
+            - name: SPRING_RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-port
+            - name: SPRING_RABBITMQ_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-username
+            - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: rabbitmq-password
+
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: postgresql-config
+                  key: datasource-url
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgresql-config
+                  key: postgres-user
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: postgres-password
+            - name: SPRING_JPA_GENERATE_DDL
+              valueFrom:
+                configMapKeyRef:
+                  name: postgresql-config
+                  key: jpa-generate-ddl
+
+            - name: SALT
+              valueFrom:
+                configMapKeyRef:
+                  name: common-config
+                  key: salt
+            - name: BOOK_STOCK_LOCATION
+              valueFrom:
+                configMapKeyRef:
+                  name: common-config
+                  key: book-stock-location

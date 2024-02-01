@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dictionary-app-deployment
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: dictionary-app
+  template:
+    metadata:
+      labels:
+        app: dictionary-app
+    spec:
+      containers:
+        - name: dictionary-app
+          image: melnykovm/dictionary-app:V7.0
+          resources:
+            limits:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+          ports:
+            - containerPort: 8010
+          env:
+            - name: SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb-config
+                  key: mongodb-authentication-database
+            - name: SPRING_DATA_MONGODB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb-config
+                  key: mongodb-username
+            - name: SPRING_DATA_MONGODB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: mongodb-password
+            - name: SPRING_DATA_MONGODB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb-config
+                  key: mongodb-database
+            - name: SPRING_DATA_MONGODB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: mongodb-config
+                  key: mongodb-port
+            - name: SPRING_DATA_MONGODB_HOST
+              value: mongodb
+
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq
+            - name: SPRING_RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-port
+            - name: SPRING_RABBITMQ_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-username
+            - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: rabbitmq-password

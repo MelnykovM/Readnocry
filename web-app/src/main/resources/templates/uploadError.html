@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAc/8AAAAAAP///wDJyckARZn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERESIiIiIRERETMzMzMyERERERERETIRERFERERBMhEREQAAAUEyERERAAAAQTIREREAAABBMhEREQAAAEEyERERAAAAQTIREREAAABBMhEREQAAAEEyERERABEQQTEREREAAABBERERERERERERERERERERERERHwDwAA4AcAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADABwAAwA8AAOAfAAD//wAA" rel="icon" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Readnocry</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body {
+          font-family: 'Montserrat', sans-serif;
+          background-color: rgb(30 31 34);
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          text-align: center;
+          color: rgb(188 190 195);
+        }
+
+        h2 {
+          color: #b00020;
+        }
+
+        a.button {
+          display: inline-block;
+          background-color: rgb(43 45 48);
+          color: rgb(188 190 195);
+          padding: 10px 20px;
+          margin: 10px;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        a.button:hover {
+          background-color: rgb(48 50 53);
+          transform: scale(1.01);
+        }
+
+        a.button:active {
+          transform: scale(0.95);
+        }
+
+        .menu-shown {
+          display: block;
+          position: fixed;
+          top: 0;
+          right: 0;
+          width: 100%;
+          background-color: rgb(30 31 34);
+          color: rgb(188 190 195);
+          padding: 7px;
+          box-sizing: border-box;
+          text-align: right;
+          font-family: 'Montserrat', sans-serif;
+        }
+
+        .menu-shown a {
+          color: rgb(188 190 195);
+          padding: 10px;
+          font-family: 'Montserrat', sans-serif;
+          font-style: normal;
+          text-decoration: none;
+        }
+
+        .menu-smartphone {
+          display: none;
+        }
+
+        .menu-button {
+          display: none;
+        }
+
+        @media only screen and (max-width: 900px) {
+
+          .menu-shown {
+            display: none;
+          }
+
+          .menu-smartphone {
+            display: block;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            right: -100%;
+            overflow-x: hidden;
+            transition: 0.5s;
+            z-index: 1;
+            background-color: rgb(43 45 48);
+            color: rgb(188 190 195);
+            font-size: 20px;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-top: 40px;
+            padding-right: 40px;
+            padding-left: 20px;
+            border-left: 2px solid rgb(188 190 195);
+          }
+
+          .menu-smartphone a {
+            color: rgb(188 190 195);
+            padding: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            text-decoration: none;
+          }
+
+          .menu-smartphone.open {
+            right: 0;
+          }
+
+          .menu-button {
+            display: block;
+            position: fixed;
+            top: 0;
+            right: 2%;
+            background-color: rgba(30 31 34 0);
+            color: rgb(188 190 195);
+            padding: 7px;
+            font-size: 25px;
+            box-sizing: border-box;
+            text-align: right;
+            font-family: 'Montserrat', sans-serif;
+            z-index: 2;
+            cursor: pointer;
+          }
+        }
+    </style>
+</head>
+
+<body>
+<div id="menu-shown" class="menu-shown">
+    <a href="/bookshelf">bookshelf</a>
+    <a href="/upload">upload</a>
+    <a href="/settings">settings</a>
+    <a href="/my-dictionary">dictionary</a>
+    <a href="/about">about</a>
+    <a href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">logout</a>
+</div>
+
+<div id="menu-smartphone" class="menu-smartphone">
+    <a href="/bookshelf">bookshelf</a>
+    <a href="/upload">upload</a>
+    <a href="/settings">settings</a>
+    <a href="/my-dictionary">dictionary</a>
+    <a href="/about">about</a>
+    <a href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">logout</a>
+</div>
+
+<div class="menu-button" id="menuButton">&#9776;</div>
+
+<h2>File Upload Error</h2>
+<p>There was an error with your file upload. Please try again.</p>
+<a href="/upload" class="button">Try Again</a>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var rightPanel = document.getElementById('menu-smartphone');
+      var menuButton = document.getElementById('menuButton');
+
+      menuButton.addEventListener('click', function() {
+        rightPanel.classList.toggle('open');
+      });
+    });
+</script>
+</body>
+</html>

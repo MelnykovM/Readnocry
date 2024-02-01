@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAc/8AAAAAAP///wDJyckARZn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERESIiIiIRERETMzMzMyERERERERETIRERFERERBMhEREQAAAUEyERERAAAAQTIREREAAABBMhEREQAAAEEyERERAAAAQTIREREAAABBMhEREQAAAEEyERERABEQQTEREREAAABBERERERERERERERERERERERERHwDwAA4AcAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADABwAAwA8AAOAfAAD//wAA" rel="icon" type="image/x-icon">
+    <title>Readnocry</title>
+    <link rel="stylesheet" th:href="@{/css/styles-aboutapp.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+<script th:src="@{/js/script-menu.js}"></script>
+
+<div class="image">
+    <img src="/book-image.png" alt="Book" class="full-width-image">
+</div>
+
+<div id="menu-shown" class="menu-shown">
+    <a href="/bookshelf">bookshelf</a>
+    <a href="/upload">upload</a>
+    <a href="/settings">settings</a>
+    <a href="/my-dictionary">dictionary</a>
+    <a href="/about">about</a>
+    <a href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">logout</a>
+</div>
+
+<div id="menu-smartphone" class="menu-smartphone">
+    <a href="/bookshelf">bookshelf</a>
+    <a href="/upload">upload</a>
+    <a href="/settings">settings</a>
+    <a href="/my-dictionary">dictionary</a>
+    <a href="/about">about</a>
+    <a href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">logout</a>
+</div>
+
+<div class="menu-button" id="menuButton">&#9776;</div>
+
+<form id="logoutForm" th:action="@{/logout}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+</form>
+
+<div class="content">
+    <h1>Welcome to Readnocry!</h1>
+
+    Readnocry lets you enjoy books in English with its AI-powered translator.
+    <br>
+    The primary benefit of using artificial intelligence for translation is its ability to understand context, idioms, and nuanced expressions.
+    <br>
+    Additionally, AI can identify words and phrases that may be unfamiliar to you,
+    based on your English proficiency level, and offer translations for these.
+    <br>
+    App also provides the way of adding these terms to a dictionary and Telegram for easy access.
+    <div class="buttons">
+        <button onclick="window.location.href='/bookshelf';">Start</button>
+    </div>
+    <br>
+
+    <div id="links" class="links">
+        <a href="https://github.com/MelnykovM/Readnocry" target="_blank">
+            <h1><i class="fab fa-github"></i> GitHub</h1>
+        </a>
+
+        <a href="https://www.linkedin.com/in/mihail-melnykov-266513124/" target="_blank">
+            <h1><i class="fab fa-linkedin"></i> LinkedIn</h1>
+        </a>
+
+    </div>
+    <br>
+
+    <h1>Tech Stack</h1>
+
+    Readnocry is built on a diverse and robust technology stack, ensuring a seamless and efficient user experience. Here's a detailed overview of the technologies used:
+    <br><br>
+    General:
+    <br>
+    <b>Java 17:</b> The core programming language providing stability and performance.
+    <br>
+    <b>Spring Boot:</b> The backbone for creating stand-alone, production-grade Spring-based applications with ease.
+    <br><br>
+    Database Management:
+    <br>
+    <b>Spring Data:</b> For streamlined data access and manipulation.
+    <br>
+    <b>PostgreSQL:</b> Our primary database, managing user information, books, and other essential data.
+    <br>
+    <b>MongoDB:</b> Employed for managing user dictionaries effectively.
+    <br><br>
+    Asynchronous Interactions Between Microservices:
+    <br>
+    <b>RabbitMQ:</b> A message broker enabling efficient communication between different parts of the application.
+    <br><br>
+    Security:
+    <br>
+    <b>Spring Security:</b> Ensures robust security measures are in place to protect user data and interactions.
+    <br><br>
+    Web Application:
+    <br>
+    <b>HTML + CSS:</b> For structuring and styling the user interface.
+    <br>
+    <b>JavaScript:</b> Adds interactivity to the web pages.
+    <br>
+    <b>WebSocket:</b> Used for real-time content updates without needing to reload the page.
+    <br><br>
+    Testing:
+    <br>
+    <b>SpringBootTest & Testcontainers:</b> A heavy focus on integration testing, with 90% of tests falling into this category, ensuring reliability and robustness.
+    <br><br>
+    Deployment:
+    <br>
+    <b>Docker + Kubernetes:</b> The application is deployed on Google Cloud Kubernetes, ensuring scalability and reliability.
+    <br><br>
+    Logging:
+    <br>
+    <b>Log4j:</b> For efficient tracking and logging of application operations.
+    <br><br>
+    Additional technical solutions:
+    <br>
+    <b>MappedFileBlock:</b> this feature is specifically designed for caching "active" parts of books. It significantly improves performance by reducing load times and enhancing the responsiveness of the app. This approach ensures that users have a seamless reading experience, especially when navigating through large volumes of text.
+    <br>
+    <b>CryptoTool:</b> Utilized for hashing user IDs while creating activation links for user accounts and connecting the Telegram bot with the addition of a "Salt". It prevents potential attackers from easily deciphering hashed information, thus safeguarding user data and connections, especially during critical actions like account activation and bot integration.
+    <br><br>
+    External Services:
+    <br>
+    <b>Telegram Bot API:</b> Integrated using WebHook technology for real-time interactions.
+    <br>
+    <b>Open AI API:</b> Facilitates interaction with ChatGPT, utilizing the gpt-3.5-turbo model for advanced AI capabilities.
+
+    <div class="buttons">
+        <button onclick="window.location.href='/bookshelf';">Start</button>
+    </div>
+</div>
+
+</body>
+</html>

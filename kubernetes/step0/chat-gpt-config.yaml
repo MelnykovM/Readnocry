@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chat-gpt-config
+data:
+  gpt-model: "gpt-3.5-turbo"
+  gpt-url: "https://api.openai.com/v1/chat/completions"
+  gpt-maxRetriesCount: "1"

@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: rgb(30 31 34);
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+h2 {
+  color: rgb(188 190 195);
+  text-align: center;
+  padding: 5px 10px;
+}
+
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.book-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 70%;
+  margin-left: -34px;
+}
+
+.book {
+  background-color: rgb(43 45 48);
+  color: rgb(188 190 195);
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s;
+  flex: 0 0 50%;
+  flex-grow: 1;
+}
+
+.book:hover {
+  transform: scale(1.01);
+  background-color: rgb(46 48 53);
+}
+
+.book:active {
+  transform: scale(0.95);
+}
+
+.book-title {
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.menu-shown {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(30 31 34 0);
+  color: rgb(188 190 195);
+  padding: 7px;
+  box-sizing: border-box;
+  text-align: right;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.menu-shown a {
+  color: rgb(188 190 195);
+  padding: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  text-decoration: none;
+}
+
+.message {
+  color: rgb(188 190 195);
+  font-family: 'Montserrat', sans-serif;
+  padding: 15px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+  text-align: center;
+  border-radius: 5px;
+  border: solid #dc3545;
+  background-color: rgb(43 45 48);
+  font-size: 16px;
+  width: 65%;
+  display: block;
+}
+
+.message a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.message a:hover {
+  color: #0056b3;
+}
+
+.message p {
+  text-align: center;
+  margin: 0;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: rgb(188 190 195);
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.delete-btn i {
+  font-size: 15px;
+}
+
+.image {
+  top: 0;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -2;
+}
+
+.full-width-image {
+  width: auto;
+  height: 100vh;
+  opacity: 0.5;
+}
+
+.menu-smartphone {
+  display: none;
+}
+
+.menu-button {
+  display: none;
+}
+
+@media only screen and (max-width: 1100px) {
+
+  .menu-shown {
+    display: none;
+  }
+
+  .menu-smartphone {
+    display: block;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    right: -100%;
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 1;
+    background-color: rgb(43 45 48);
+    color: rgb(188 190 195);
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 40px;
+    padding-right: 40px;
+    padding-left: 20px;
+    border-left: 2px solid rgb(188 190 195);
+  }
+
+  .menu-smartphone a {
+    color: rgb(188 190 195);
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    text-decoration: none;
+  }
+
+  .menu-smartphone.open {
+    right: 0;
+  }
+
+  .menu-button {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 2%;
+    background-color: rgba(30 31 34 0);
+    color: rgb(188 190 195);
+    padding: 7px;
+    font-size: 25px;
+    box-sizing: border-box;
+    text-align: right;
+    font-family: 'Montserrat', sans-serif;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .book {
+    background-color: rgb(43 45 48);
+    color: rgb(188 190 195);
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    width: 70%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s;
+    flex: 0 0 70%;
+    flex-grow: 1;
+  }
+
+  .book-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 95%;
+    margin-left: -34px;
+  }
+
+  .message {
+    color: rgb(188 190 195);
+    font-family: 'Montserrat', sans-serif;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+    text-align: center;
+    border-radius: 5px;
+    border: solid #dc3545;
+    background-color: rgb(43 45 48);
+    font-size: 16px;
+    width: 85%;
+    display: block;
+  }
+}

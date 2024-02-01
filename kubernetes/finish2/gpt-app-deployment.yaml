@@ -1,0 +1,103 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpt-app-deployment
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: gpt-app
+  template:
+    metadata:
+      labels:
+        app: gpt-app
+    spec:
+      containers:
+        - name: gpt-app
+          image: melnykovm/gpt-app:V7.6
+          resources:
+            limits:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+          ports:
+            - containerPort: 8089
+
+          env:
+            - name: SERVER_PORT
+              value: "8089"
+
+            - name: GPT_MODEL
+              valueFrom:
+                configMapKeyRef:
+                  name: chat-gpt-config
+                  key: gpt-model
+            - name: GPT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: gpt-token
+            - name: GPT_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: chat-gpt-config
+                  key: gpt-url
+            - name: GPT_MAXRETRIESCOUNT
+              valueFrom:
+                configMapKeyRef:
+                  name: chat-gpt-config
+                  key: gpt-maxRetriesCount
+
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq
+            - name: SPRING_RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-port
+            - name: SPRING_RABBITMQ_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-username
+            - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: rabbitmq-password
+
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: postgresql-config
+                  key: datasource-url
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgresql-config
+                  key: postgres-user
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: postgres-password
+            - name: SPRING_JPA_GENERATE_DDL
+              valueFrom:
+                configMapKeyRef:
+                  name: postgresql-config
+                  key: jpa-generate-ddl
+
+            - name: SALT
+              valueFrom:
+                configMapKeyRef:
+                  name: common-config
+                  key: salt
+            - name: BOOK_STOCK_LOCATION
+              valueFrom:
+                configMapKeyRef:
+                  name: common-config
+                  key: book-stock-location

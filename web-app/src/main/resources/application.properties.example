@@ -1,0 +1,15 @@
+server.port=
+
+spring.rabbitmq.host=
+spring.rabbitmq.port=
+spring.rabbitmq.username=
+spring.rabbitmq.password=
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/...
+spring.datasource.username=
+spring.datasource.password=
+spring.jpa.generate-ddl=true
+
+salt=yoursalt
+
+book-stock.location=./files

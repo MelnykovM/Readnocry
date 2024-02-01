@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mailbox-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mailbox-app
+  template:
+    metadata:
+      labels:
+        app: mailbox-app
+    spec:
+      containers:
+        - name: mailbox-app
+          image: melnykovm/mailbox-app:V1.0.4
+          resources:
+            limits:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+          ports:
+            - containerPort: 8087
+          env:
+            - name: SERVER_PORT
+              value: "8087"
+            - name: SPRING_MAIL_HOST
+              value: "mail.gmx.com"
+            - name: SPRING_MAIL_PORT
+              value: "465"
+            - name: SPRING_MAIL_PROTOCOL
+              value: "smtps"
+            - name: SPRING_MAIL_USERNAME
+              value: "readnocry@gmx.com"
+            - name: SPRING_MAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: mail-password
+
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq
+            - name: SPRING_RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-port
+            - name: SPRING_RABBITMQ_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-username
+            - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: rabbitmq-password
+
+            - name: SERVICE_MAIL_MAIL_ACTIVATION_URI
+              value: "https://readnocry.com/user/mail-activation?id={id}"
+            - name: SERVICE_MAIL_TELEGRAM_CONNECTION_URI
+              value: "https://readnocry.com/user/telegram-connection?id={id}"

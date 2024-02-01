@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgresql-config
+data:
+  postgres-user: "user-readnocry"
+  postgres-db: "readnocry-postgresql"
+  datasource-url: "jdbc:postgresql://postgresql:5432/readnocry-postgresql"
+  jpa-generate-ddl: "true"

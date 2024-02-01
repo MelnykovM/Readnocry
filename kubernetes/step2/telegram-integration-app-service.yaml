@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: telegram-integration-app-service
+spec:
+  selector:
+    app: telegram-integration-app
+  ports:
+    - protocol: TCP
+      port: 8085
+      targetPort: 8085

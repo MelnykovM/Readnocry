@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAc/8AAAAAAP///wDJyckARZn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERESIiIiIRERETMzMzMyERERERERETIRERFERERBMhEREQAAAUEyERERAAAAQTIREREAAABBMhEREQAAAEEyERERAAAAQTIREREAAABBMhEREQAAAEEyERERABEQQTEREREAAABBERERERERERERERERERERERERHwDwAA4AcAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADABwAAwA8AAOAfAAD//wAA" rel="icon" type="image/x-icon">
+    <title>Readnocry</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body,
+        html {
+          height: 100%;
+          color: rgb(188 190 195);
+          background-color: rgb(30 31 34);
+        }
+
+        .container {
+          height: 100%;
+        }
+
+        .image {
+          top: 0;
+          position: fixed;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .full-width-image {
+          width: auto;
+          height: 100vh;
+        }
+
+        .name {
+          position: fixed;
+          top: 10%;
+          right: 10%;
+          text-align: right;
+
+          padding: 0;
+          font-size: 30px;
+          font-family: 'Montserrat', sans-serif;
+        }
+
+        .name h1,
+        .name h4 {
+          margin: 0;
+        }
+
+
+        .buttons {
+          position: fixed;
+          bottom: 10%;
+          left: 10%;
+          margin: 0;
+        }
+
+        button {
+          width: 150px;
+          height: 50px;
+          margin: 5px;
+          padding: 10px;
+          font-size: 15px;
+          background-color: rgb(43 45 48);
+          color: rgb(188 190 195);
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        button:hover {
+          background-color: rgb(48 50 53);
+          transform: scale(1.01);
+        }
+
+        button:active {
+          transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="image">
+    <img src="/book-image.png" alt="Book" class="full-width-image">
+</div>
+
+<div class="container">
+
+    <div class="buttons">
+        <button onclick="window.location.href='/about';">About</button><br>
+        <button onclick="window.location.href='/login';">Login</button><br>
+        <button onclick="window.location.href='/register';">Registration</button>
+    </div>
+
+    <div class="name" id="name">
+        <h1>Readnocry</h1>
+        <h4>AI book reader</h4>
+    </div>
+</div>
+
+</body>
+
+</html>

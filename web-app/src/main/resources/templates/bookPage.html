@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAc/8AAAAAAP///wDJyckARZn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERERESIiIiIRERETMzMzMyERERERERETIRERFERERBMhEREQAAAUEyERERAAAAQTIREREAAABBMhEREQAAAEEyERERAAAAQTIREREAAABBMhEREQAAAEEyERERABEQQTEREREAAABBERERERERERERERERERERERERHwDwAA4AcAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADAAwAAwAMAAMADAADABwAAwA8AAOAfAAD//wAA" rel="icon" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title>Readnocry</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stomp-websocket/lib/stomp.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/styles-bookpage.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body th:data-username="${username}">
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var bookMetaData = JSON.parse( /*[[${bookMetaDataJson}]]*/ '{}');
+    /*]]>*/
+
+</script>
+<script th:src="@{/js/script-bookpage.js}"></script>
+
+<div id="menu-smartphone" class="menu-smartphone">
+    <a href="/bookshelf">bookshelf</a>
+    <a href="/upload">upload</a>
+    <a href="/settings">settings</a>
+    <a href="/my-dictionary">dictionary</a>
+    <a href="/about">about</a>
+    <a href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">logout</a>
+</div>
+
+<div id="menu-button-line" class="menu-button-line">
+    <label class="theme-switcher">
+        <input type="checkbox" id="themeToggle">
+        <div class="slider round"></div>
+    </label>
+
+    <div id="menu-shown" class="menu-shown">
+        <a href="/bookshelf">bookshelf</a>
+        <a href="/settings">settings</a>
+        <a href="/my-dictionary">dictionary</a>
+        <a href="#" onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">logout</a>
+    </div>
+    <div class="menu-button" id="menuButton">&#9776;menu</div>
+</div>
+
+<form id="logoutForm" th:action="@{/logout}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+</form>
+
+<div class="container">
+    <div class="left">
+        <div id="bookContent"></div>
+        <div class="button-container">
+            <button onclick="previousPage()"><i class="fa fa-arrow-left"></i></button>
+            <span id="currentPageDisplay"></span>
+            <button onclick="nextPage()"><i class="fa fa-arrow-right"></i></button>
+            <div class="translation-menu-button" id="translation-menu-button">
+                <i class="fas fa-book"></i> &nbsp; translation
+            </div>
+        </div>
+    </div>
+    <div class="right" id="right">
+        <div class="translation" id="translation"> Here you will find a sentence translation. <br>
+            Click on any sentence from the book, and the artificial intelligence will translate it, taking into account the context and idioms.<br>
+            It also offers the option to add individual phrases to your vocabulary and Telegram.<br>
+            At the moment, Chat GPT is not very fast, so the waiting time for a translation can be around 10 seconds.
+        </div>
+        <div id="loading-light" style="display:none;">
+            <img src="/loading-light.gif" alt="Loading..." />
+        </div>
+        <div id="loading-dark" style="display:none;">
+            <img src="/loading-dark.gif" alt="Loading..." />
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: common-config
+data:
+  salt: "exmqiAZK7rAYfAX_r9HkaD2jZLzG5hMexmqiAZK7rAYfAX_r9HkaD2jZLzG5hM"
+  book-stock-location: "/files1"

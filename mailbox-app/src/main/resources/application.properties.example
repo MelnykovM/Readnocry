@@ -1,0 +1,13 @@
+spring.mail.host=
+spring.mail.port=
+spring.mail.protocol=
+spring.mail.username=
+spring.mail.password=
+
+spring.rabbitmq.host=
+spring.rabbitmq.port=
+spring.rabbitmq.username=
+spring.rabbitmq.password=
+
+service.mail.mail-activation-uri=http://127.0.0.1:<yourPort>/user/mail-activation?id={id}
+service.mail.telegram-connection-uri=http://127.0.0.1:<yourPort>/user/telegram-connection?id={id}

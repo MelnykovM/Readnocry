@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-deployment
+  annotations:
+    beta.cloud.google.com/backend-config: '{"ports": {"443":"serviceproxy-backendconfig"}}'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      volumes:
+        - name: file-storage1
+          persistentVolumeClaim:
+            claimName: file-storage1
+      containers:
+        - name: web-app
+          image: melnykovm/web-app:V1.0.4
+          resources:
+            limits:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              ephemeral-storage: 256Mi
+              memory: 512Mi
+          ports:
+            - containerPort: 8070
+          volumeMounts:
+            - name: file-storage1
+              mountPath: "/files1"
+          env:
+            - name: SERVER_PORT
+              value: "8070"
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq
+            - name: SPRING_RABBITMQ_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-port
+            - name: SPRING_RABBITMQ_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: rabbitmq-config
+                  key: rabbitmq-username
+            - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: rabbitmq-password
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: postgresql-config
+                  key: datasource-url
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: postgresql-config
+                  key: postgres-user
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: common-secret
+                  key: postgres-password
+            - name: SPRING_JPA_GENERATE_DDL
+              valueFrom:
+                configMapKeyRef:
+                  name: postgresql-config
+                  key: jpa-generate-ddl
+            - name: SALT
+              valueFrom:
+                configMapKeyRef:
+                  name: common-config
+                  key: salt
+            - name: BOOK_STOCK_LOCATION
+              valueFrom:
+                configMapKeyRef:
+                  name: common-config
+                  key: book-stock-location
