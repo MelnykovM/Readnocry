@@ -91,7 +91,7 @@ Readnocry is architecturally designed as a **microservices-based** application, 
 
 ## 🚀 About Me
 
-Hi! I am Mihail Melnykov, I am a Software Engineer hailing from Ukraine with 3 years comertilal expirience. Equipped with a blend of robust analytical, technical, and soft skills. Since 2021, I have been actively involved in enterprise projects, specializing in Java development.
+Hi! I am Mihail Melnykov, I am a Software Engineer hailing from Ukraine. Equipped with a blend of robust analytical, technical, and soft skills. Since 2021, I have been actively involved in enterprise projects, specializing in Java development.
 
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mihail-melnykov-266513124/)
 
