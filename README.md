@@ -3,10 +3,6 @@
 
 Readnocry lets you enjoy books in English with its AI-powered translator. The primary benefit of using artificial intelligence for translation is its ability to understand context, idioms, and nuanced expressions. Additionally, AI can identify words and phrases that may be unfamiliar to you, based on your English proficiency level, and offer translations for these. App also provides the way of adding these terms to a dictionary and Telegram for easy access.
 
-## Demo
-
-https://readnocry.com/
-
 ## Tech Stack
 Readnocry is built on a diverse and robust technology stack, ensuring a seamless and efficient user experience. Here's a detailed overview of the technologies used:
 
@@ -46,7 +42,7 @@ Testing:
 
 Deployment:
 
-**Docker + Kubernetes:** The application is deployed on Google Cloud Kubernetes, ensuring scalability and reliability. It's accessible at https://readnocry.com/.
+**Docker + Kubernetes:** The application is deployed on Google Cloud Kubernetes, ensuring scalability and reliability.
 
 Logging:
 
